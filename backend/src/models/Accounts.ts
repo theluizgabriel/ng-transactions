@@ -24,7 +24,4 @@ Accounts.init({
   timestamps: false,
 });
 
-Accounts.hasMany(TransactionsModel, { foreignKey: 'id', as: 'debitedAccountId' });
-Accounts.hasMany(TransactionsModel, { foreignKey: 'id', as: 'creditedAccountId' });
-
 export default Accounts;

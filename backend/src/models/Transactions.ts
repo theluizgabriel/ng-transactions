@@ -1,12 +1,13 @@
 import { Model, INTEGER, DATE } from 'sequelize';
 import db from '.';
-import AccountsModel from './Accounts';
+import Accounts from './Accounts';
 
 class Transactions extends Model {
   id!: number;
-  username!: string;
-  password!: string;
-  accountId!: number;
+  debitedAccountId!: number;
+  creditedAccountId!: number;
+  value!: number;
+  createdAt!: Date;
 }
 
 Transactions.init({
@@ -16,11 +17,11 @@ Transactions.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  debitedAccountId: {
+  creditedAId: {
     type: INTEGER,
     allowNull: false,
   },
-  creditedAccountId: {
+  debitedAId: {
     type: INTEGER,
     allowNull: false,
   },
@@ -37,5 +38,11 @@ Transactions.init({
   modelName: 'users',
   timestamps: false,
 });
+
+Accounts.hasMany(Transactions, { foreignKey: 'id', as: 'debitedAccountId' });
+Accounts.hasMany(Transactions, { foreignKey: 'id', as: 'creditedAccountId' });
+
+Transactions.belongsTo(Accounts, { foreignKey: 'debitedAId', as: 'debitedAccountId' });
+Transactions.belongsTo(Accounts, { foreignKey: 'creditedAId', as: 'creditedAccountId' });
 
 export default Transactions;

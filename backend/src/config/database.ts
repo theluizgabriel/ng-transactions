@@ -6,12 +6,8 @@ const config: Options = {
   password: process.env.DB_PASS || '123456',
   database: 'NG_CASH',
   host: process.env.DB_HOST || 'localhost',
-  port: Number(process.env.DB_PORT) || 3002,
-  dialect: 'postgres',
-  dialectOptions: {
-    timezone: 'Z',
-  },
-  logging: false,
+  port: Number(process.env.DB_PORT) || 5432,
+  dialect: 'postgres'
 }
 
 module.exports = config;

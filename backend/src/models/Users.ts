@@ -24,7 +24,7 @@ Users.init({
     type: STRING(100),
     allowNull: false,
   },
-  accountId: {
+  idAccount: {
     type: INTEGER,
     allowNull: false,
   }
@@ -34,8 +34,8 @@ Users.init({
   timestamps: false,
 });
 
-Users.hasOne(AccountsModel, { foreignKey: 'id', as: 'accountId' });
+AccountsModel.hasOne(Users, { foreignKey: 'id', as: 'accountId' })
 
-
+Users.belongsTo(AccountsModel, { foreignKey: 'idAccount', as: 'accountId' });
 
 export default Users;

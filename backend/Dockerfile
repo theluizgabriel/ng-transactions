@@ -2,8 +2,8 @@ FROM node:16.14-alpine
 WORKDIR /app-backend
 
 COPY . .
-RUN npm install && npm run build
+RUN npm i && npm run build
 
-EXPOSE 3001
+EXPOSE 3002
 
 CMD ["npm", "run", "start"]
