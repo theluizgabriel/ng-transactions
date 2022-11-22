@@ -1,6 +1,6 @@
 import Users from '../models/Users';
 import Accounts from '../models/Accounts';
-import { ILogin, ObjectHTTP } from '../entities/Interfaces';
+import { ILogin, JSONBalance, IObjectHTTP } from '../entities/Interfaces';
 import * as bcrypt from 'bcryptjs';
 import isAuthenticatedForRegister from '../utils/validates';
 
@@ -14,13 +14,12 @@ export default class UserService {
       username: data.username,
     } });
     if (!user[0]) return false;
-
-
-    const result = true;
-    return result;
+    const result = bcrypt.compareSync(data.password, user[0]?.password);
+    if (!result) return false;
+    return true;
   }
 
-  async register(data: ILogin): Promise<ObjectHTTP> {
+  async register(data: ILogin): Promise<IObjectHTTP> {
     const auth = await isAuthenticatedForRegister(data)
     if(auth.status !== 200) return auth
     const {username} = data
@@ -36,5 +35,35 @@ export default class UserService {
       return { message: 'Criado com sucesso!', status: 200 }
     }
     return { message: 'Não foi possível criar o usuário', status: 400 }
+  }
+
+  async balance(username: string): Promise<IObjectHTTP> {
+    const user = await Users.findAll({
+      where: { username },
+      attributes: {exclude: ['password']},
+      include: [{
+        model: Accounts,
+        as: 'account',
+      }]
+    })    
+    const json: JSONBalance = user[0].toJSON()
+    console.log(json);
+    
+  
+    if (json) {
+      const { balance } = json.account;
+      return { message: `${balance}`, status: 200 }
+    }
+    return { message: 'Não foi possível achar seu valor em conta', status: 400 }
+  }
+
+  async getUsernameById(id: number): Promise<IObjectHTTP> {
+    try {
+      const user = await Users.findByPk(id)
+      if (user) return { message: `${user.username}`, status: 200 }
+    } catch (e: any) {
+      return { message: `${e.error}`, status: 400 }
+    }
+    return { message: "Não existe esse usuário!" , status: 400 }
   }
 }

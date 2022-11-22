@@ -3,7 +3,17 @@ export interface ILogin {
   password: string;
 }
 
-export interface ObjectHTTP {
+export interface IObjectHTTP {
   status: number;
   message: string;
+  json?: any;
+}
+
+export interface JSONBalance {
+  [key: string]: any
+}
+
+export interface ITransaction {
+  creditedAccountUser: string;
+  value: number;
 }

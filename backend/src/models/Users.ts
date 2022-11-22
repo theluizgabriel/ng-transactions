@@ -6,7 +6,7 @@ class Users extends Model {
   id!: number;
   username!: string;
   password!: string;
-  accountId!: number;
+  account!: number;
 }
 
 Users.init({
@@ -34,8 +34,8 @@ Users.init({
   timestamps: false,
 });
 
-AccountsModel.hasOne(Users, { foreignKey: 'id', as: 'accountId' })
+AccountsModel.hasOne(Users, { foreignKey: 'id', as: 'account' })
 
-Users.belongsTo(AccountsModel, { foreignKey: 'idAccount', as: 'accountId' });
+Users.belongsTo(AccountsModel, { foreignKey: 'idAccount', as: 'account' });
 
 export default Users;

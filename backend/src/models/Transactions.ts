@@ -1,4 +1,4 @@
-import { Model, INTEGER, DATE } from 'sequelize';
+import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 import Accounts from './Accounts';
 
@@ -7,7 +7,7 @@ class Transactions extends Model {
   debitedAccountId!: number;
   creditedAccountId!: number;
   value!: number;
-  createdAt!: Date;
+  createdAt!: string;
 }
 
 Transactions.init({
@@ -30,12 +30,12 @@ Transactions.init({
     allowNull: false,
   },
   createdAt: {
-    type: DATE,
+    type: STRING,
     allowNull: false,
   }
 }, {
   sequelize: db,
-  modelName: 'users',
+  modelName: 'transactions',
   timestamps: false,
 });
 

@@ -1,6 +1,9 @@
 import * as express from 'express';
 import loginRoute from './routes/login.route'
 import registerRoute from './routes/register.route'
+import balanceRoute from './routes/balance.route'
+import transactionRoute from './routes/transactions.route'
+import userRoute from './routes/user.route'
 
 class App {
   public app: express.Express;
@@ -30,6 +33,9 @@ class App {
   private router():void {
     this.app.use('/login', loginRoute);
     this.app.use('/register', registerRoute);
+    this.app.use('/balance', balanceRoute)
+    this.app.use('/transactions', transactionRoute)
+    this.app.use('/users', userRoute)
   }
 
   public start(PORT: string | number):void {

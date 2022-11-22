@@ -5,8 +5,4 @@ import { ILogin } from '../entities/Interfaces';
 dotenv.config();
 
 const secret: jwt.Secret = process.env.JWT_SECRET || 'jwt_secret';
-const tokenGenerate = (data: ILogin) => jwt.sign(data, secret, {
-    expiresIn: '1d'
-});
-
-export default tokenGenerate;
+export function tokenGenerate (data: ILogin) { return jwt.sign(data, secret, { expiresIn: '1d' }); }

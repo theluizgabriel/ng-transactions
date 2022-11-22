@@ -1,7 +1,7 @@
-import { ILogin, ObjectHTTP } from "../entities/Interfaces";
+import { ILogin, IObjectHTTP } from "../entities/Interfaces";
 import Users from "../models/Users";
 
-export default async function isAuthenticatedForRegister(data: ILogin): Promise<ObjectHTTP> {
+export default async function isAuthenticatedForRegister(data: ILogin): Promise<IObjectHTTP> {
     const { username, password } = data
     const senhaRegex = /^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z$*&@#]{8,}$/
 
@@ -15,7 +15,7 @@ export default async function isAuthenticatedForRegister(data: ILogin): Promise<
     if(password) {
         const testRegex = senhaRegex.test(password)
         if(!testRegex) {
-            return {message: 'Sua senha deve ter um número e uma letra maiúscula', status: 400}
+            return {message: 'Sua senha deve ter oito caracteres, um número e uma letra maiúscula', status: 400}
         }
     }
 
