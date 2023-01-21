@@ -11,7 +11,7 @@ interface BodyT {
 }
 
 const api = axios.create({
-  baseURL: `http://localhost:${process.env.REACT_APP_API_PORT || '3002'}`,
+  baseURL: `https://${process.env.REACT_APP_API_HOST}`,
 });
 
 export const setToken = (token: string) => {
