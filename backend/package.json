@@ -6,8 +6,8 @@
   "scripts": {
     "build": "npx -y tsc",
     "start:dev": "nodemon",
+    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "start": "node .",
-    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "db:seed": "npx sequelize-cli db:seed:all",
     "dev": "nodemon --watch \"./src/**\" ./src/server.ts"
   },
