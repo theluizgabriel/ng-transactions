@@ -66,9 +66,8 @@ export default function SignIn() {
             mx: "25%",
             }}>
           <Typography variant="h5">Seja bem-vindo a</Typography>
-          <Typography variant="h1" sx={{fontFamily: 'Bebas Neue', mt: -1}}>Nova</Typography>
-          <Typography variant="h1" sx={{fontFamily: 'Bebas Neue', mt: -3, mb: 4}}>Geração</Typography>
-          {/* <Typography variant="h4" sx={{ textAlign: 'center'}}>Segurança --- Conectividade --- Rapidez</Typography> */}
+          <Typography variant="h1" sx={{fontFamily: 'Bebas Neue', mt: -1}}>New</Typography>
+          <Typography variant="h1" sx={{fontFamily: 'Bebas Neue', mt: -3, mb: 4}}>Generation</Typography>
           </Box>
           </Grid>
         <Grid item md={5} sx={{backgroundColor: 'secondary.main'}} component={Paper} elevation={6} square>
@@ -96,8 +95,8 @@ export default function SignIn() {
           }}
         >
           <img 
-          src='https://i.imgur.com/J7cF6QS.png' 
-          alt='Logo da NG Cash' 
+          src='https://imgur.com/Y8mTPZC.png' 
+          alt='Logo New Generation' 
           width='120px'
           style={{borderRadius: 4}}
           />

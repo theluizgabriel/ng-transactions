@@ -70,7 +70,7 @@ export default function TransferNow() {
             value={transfer.user}
             sx={{ml: 2}}
             onChange={(e: any) => {
-                setTransfer({ user: e.target.value, value: transfer.value })
+                setTransfer({ user: (e.target.value).toLowerCase(), value: transfer.value })
             }}
             />
         </Box>

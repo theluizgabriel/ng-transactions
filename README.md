@@ -11,10 +11,11 @@ Espere o docker concluir o carregamento dos containers e dar o start. Depois dê
 
 ```
 docker exec -it app_backend //bin/sh
-```
-```
 npm run db:reset
+npm run db:seed
 ```
+
+
 
 ## 📄 FRONTEND
 Abra o projeto completo através do link:
